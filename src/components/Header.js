@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#bbb',
+    width: '100%',
   },
   rowContainer: {
     flexDirection: 'row',
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 30,
-    height: 40,
+    height: 45,
     marginRight: 10,
   },
   title: {
