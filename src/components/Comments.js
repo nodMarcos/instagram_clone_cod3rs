@@ -1,17 +1,19 @@
 import { Component} from 'react'
-import { StyleSheet, View, Alert, Text, Dimensions } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
 export default class Comments extends Component {
   render() {
     let view = null
     if (this.props.comments) {
       view = this.props.comments.map((item, index) => {
-        return (
-          <View style={styles.commentContainer} key={index}>
-            <Text style={styles.nickname}>{item.nickname}: </Text>
-            <Text style={styles.comment}>{item.comment}</Text>
-          </View>
-        )
+        if (item.comment !== '') {
+          return (
+            <View style={styles.commentContainer} key={index}>
+              <Text style={styles.nickname}>{item.nickname}: </Text>
+              <Text style={styles.comment}>{item.comment}</Text>
+            </View>
+          )
+        }
       }) 
     }
 

@@ -12,7 +12,7 @@ const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator()
 
 const LoginOrProfileRouter = () =>
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName='Auth'>
         <Stack.Screen name='Profile' component={Profile} />
         <Stack.Screen name='Auth' component={Login} />
         <Stack.Screen name='Register' component={Register} />
@@ -44,7 +44,7 @@ export default props => {
           },
           null,
         ]
-      })} initialRouteName="Feed">
+      })} initialRouteName='Profile'>
         <Tab.Screen name="Feed" component={Feed} />
         <Tab.Screen name="Add" component={AddPhoto} />
         <Tab.Screen name="Profile" component={LoginOrProfileRouter} />

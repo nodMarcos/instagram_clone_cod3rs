@@ -1,43 +1,20 @@
 import React from 'react';
 import { StyleSheet, FlatList, View } from 'react-native'
+import { connect } from 'react-redux';
 import Header from '../components/Header';
 import Post from '../components/Post';
+import { fetchPosts } from '../store/actions/posts';
 
-export default class Feed extends React.Component {
-  state = {
-    posts: [
-      {
-        id: Math.random(),
-        nickname: 'Fulano de Tal',
-        email: 'fulano@gmail.com',
-        image: require('../../assets/imgs/fence.jpg'),
-        comments: [
-          {
-            nickname: 'John Alberto Silva',
-            comment: 'Bela foto!'
-          },
-          {
-            nickname: 'Ray Wilson Sumpton',
-            comment: 'Stunning!'
-          }
-        ]
-      },
-      {
-        id: Math.random(),
-        nickname: 'Johnson Gil Almeida',
-        email: 'johnson@gmail.com',
-        image: require('../../assets/imgs/bw.jpg'),
-        comments: []
-      }
-    ]
+class Feed extends React.Component {
+  componentDidMount() {
+    this.props.onFetchPosts()
   }
-
   render () {
     return (
       <View style={styles.container}>
         <Header />
         <FlatList
-          data={this.state.posts}
+          data={this.props.posts}
           keyExtractor={post => `${post.id}`}
           renderItem={({item}) => <Post key={item.id} {...item}/>}
         />
@@ -54,3 +31,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   }
 })
+
+const mapStateToProps = ({ posts }) => {
+  return {
+    posts: posts.posts
+  }
+}
+
+const mapDispatchToProps =  dispatch => {
+  return {
+    onFetchPosts: () => dispatch(fetchPosts())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Feed)
