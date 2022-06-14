@@ -23,6 +23,7 @@ class Login extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <Text style={styles.title}>Login</Text>
         <TextInput
           keyboardType='email-address'
           autoFocus={true}
@@ -35,6 +36,7 @@ class Login extends React.Component {
           style={styles.input}
           placeholder="Senha"
           value={this.state.password}
+          secureTextEntry={true}
           onChangeText={password => this.setState({ password })}
         />
         <TouchableOpacity style={styles.button} onPress={this.login}>
@@ -54,21 +56,30 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  title: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginBottom: 20,
+
+  },
   button: {
-    marginTop: 30,
+    marginTop: 20,
+    borderRadius: 4,
     padding: 10,
     backgroundColor: '#4286f4',
   },
   buttonText: {
-    fontSize: 20,
+    fontSize: 15,
     color: '#fff',
   },
   input: {
-    marginTop: 20,
+    marginTop: 10,
+    borderRadius: 20,
     width: '90%',
     height: 40,
-    borderColor: '#333',
+    borderColor: '#bbb',
     padding: 10,
+    paddingLeft: 25,
     backgroundColor: '#eee',
     borderWidth: 1,
   }

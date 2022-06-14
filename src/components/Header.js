@@ -55,6 +55,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   user: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10,
     fontSize: 10,
     color: '#888'
   },
@@ -62,6 +65,8 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     marginLeft: 10,
+    marginTop: 10,
+    borderRadius: 24
   }
 })
 

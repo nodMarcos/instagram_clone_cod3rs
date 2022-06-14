@@ -1,10 +1,11 @@
 import Axios from 'axios'
 import { ADD_POST, CREATING_POST, POST_CREATED, ADD_COMMENT, SET_POSTS } from '../actions/actionTypes'
+import { setMessage } from './message'
 
 export const addPost = post => {
-  return dispatch => {
+  return (dispatch, getState) => {
     dispatch(creatingPost())
-    Axios.post('/posts.json', { ...post })
+    Axios.post(`/posts.json?auth=${getState().user.token}`, { ...post })
       .catch(err => dispatch(setMessage({
         title: 'Erro',
         text: 'Ocorreu um erro inesperado!'
@@ -31,7 +32,7 @@ export const addComment = payload => {
       .then(res => {
         const comments = res.data.comments || []
         comments.push(payload.comment)
-        Axios.patch(`/posts/${payload.postId}.json`, { comments })
+        Axios.patch(`/posts/${payload.postId}.json?auth=${getState().user.token}`, { comments })
           .catch(err => dispatch(setMessage({
             title: 'Erro',
             text: 'Ocorreu um erro inesperado!'

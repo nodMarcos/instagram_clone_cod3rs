@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Navigator from './Navigator'
 import { setMessage } from './store/actions/message'
 
-class App extends Component {
+class AppNavigator extends Component {
     componentDidUpdate = () => {
         if(this.props.text && this.props.text.toString().trim()) {
             Alert.alert(this.props.title || 'Mensagem',
@@ -34,4 +34,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps) (AppNavigator)

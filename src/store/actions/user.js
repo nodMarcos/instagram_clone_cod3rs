@@ -1,5 +1,6 @@
 import Axios from 'axios'
 import { USER_LOGGED_IN, USER_LOGGED_OUT, LOADING_USER, USER_LOADED } from './actionTypes'
+import { setMessage } from './message'
 
 const authBaseURL = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty'
 const API_KEY = 'AIzaSyAZF6J9H05WtBQLPIOQ8CrmRE80YT_rGn0'
@@ -11,7 +12,7 @@ export const userLogged = user => {
   }
 }
 
-export const logout = user => {
+export const logout = () => {
   return {
     type: USER_LOGGED_OUT,
   }
@@ -19,6 +20,7 @@ export const logout = user => {
 
 export const createUser = (user) => {
   return dispatch => {
+    dispatch(loadingUser())
     Axios.post(`${authBaseURL}/signupNewUser?key=${API_KEY}`, {
       email: user.email,
       password: user.password,
@@ -41,11 +43,8 @@ export const createUser = (user) => {
                 text: 'Ocorreu um erro inesperado!'
               }))
             })
-            .then(res => {
-              dispatch(setMessage({
-                title: 'Sucesso',
-                text: 'Usuario criado com sucesso!'
-            }))
+            .then(() => {
+              dispatch(login(user))
             })
         }
       })

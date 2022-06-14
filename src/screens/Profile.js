@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   avatar: {
-    width: 150,
-    height: 150,
+    width: 100,
+    height: 100,
     borderRadius: 75,
     marginTop: 100, 
   },
@@ -50,11 +50,12 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 20,
     padding: 10,
+    borderRadius: 4,
     backgroundColor: '#4286f4',
   },
   buttonText: {
     color: '#fff',
-    fontSize: 20,
+    fontSize: 15,
   }
 })
 

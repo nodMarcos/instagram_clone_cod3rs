@@ -7,14 +7,16 @@ import AddPhoto from './screens/AddPhoto'
 import Profile from './screens/Profile';
 import Login from './screens/Login';
 import Register from './screens/Register';
+import Splash from './screens/Splash';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator()
 
 const LoginOrProfileRouter = () =>
-    <Stack.Navigator initialRouteName='Auth'>
-        <Stack.Screen name='Profile' component={Profile} />
-        <Stack.Screen name='Auth' component={Login} />
+    <Stack.Navigator initialRouteName='Splash'>
+        <Stack.Screen name='Splash' component={Splash} options={{headerShown: false}} />
+        <Stack.Screen name='Profile' component={Profile} options={{headerShown: false}}/>
+        <Stack.Screen name='Auth' component={Login} options={{headerShown: false}}/>
         <Stack.Screen name='Register' component={Register} />
     </Stack.Navigator>
 
